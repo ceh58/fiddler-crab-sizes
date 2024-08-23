@@ -4,23 +4,38 @@ format: html
 editor: visual
 editor_options: 
   chunk_output_type: console
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
 ```{r}
 library(lterdatasampler)
 library(tidyverse)
+library(kableExtra)
+
 pie_crab <- pie_crab
 
-head(pie_crab)
-dim(pie_crab)
 ```
 
 #Creating a plot of crab carapace size and latitude
 
 ```{r}
-
+#| fig-cap: "this is my caption"
 ggplot(pie_crab, aes(x= size, y= latitude)) +
   geom_point()
 
-
+summary_table <- pie_crab %>%
+  select(site, size) %>%
+  group_by(site) %>%
+  summarize(mean_size = round(mean(size), 2), sd_size = round(sd(size), 2), sample_size = n())
 ```
+
+```{r}
+#| fig-cap: "this is a table"
+summary_table %>%
+  kable(col.names = c("Site", "Mean Size (mm)", "Standard Deviation", "Sample Size (crabs)")) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
