@@ -1,0 +1,16 @@
+---
+title: "fiddler-crabs"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(lterdatasampler)
+pie_crab <- pie_crab
+
+head(pie_crab)
+dim(pie_crab)
+```
+
