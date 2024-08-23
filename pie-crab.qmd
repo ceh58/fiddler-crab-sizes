@@ -8,9 +8,19 @@ editor_options:
 
 ```{r}
 library(lterdatasampler)
+library(tidyverse)
 pie_crab <- pie_crab
 
 head(pie_crab)
 dim(pie_crab)
 ```
 
+#Creating a plot of crab carapace size and latitude
+
+```{r}
+
+ggplot(pie_crab, aes(x= size, y= latitude)) +
+  geom_point()
+
+
+```
